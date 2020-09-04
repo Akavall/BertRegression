@@ -173,9 +173,9 @@ if __name__ == "__main__":
     df_train_temp["date_sold"] = df_train.apply(make_prev_sale_date, axis=1)
     df_train_temp["sq_ft"] = df_train.apply(make_square_footage, axis=1)
     df_train_temp["bath_counts"] = df_train.apply(make_baths_counts, axis=1)
-    df_train_temp["lot_area"] = df_train.apply(make_square_footage, axis=1)
+    df_train_temp["lot_area"] = df_train.apply(make_lot_area, axis=1)
     df_train_temp["overall_quality"] = df_train.apply(make_overall_quality, axis=1)
-    df_train_temp["overall_condition"] = df_train.apply(make_overall_quality, axis=1)
+    df_train_temp["overall_condition"] = df_train.apply(make_overall_condition, axis=1)
 
     df_train_to_write = pd.DataFrame()
 
@@ -191,7 +191,7 @@ if __name__ == "__main__":
     df_test_temp["date_sold"] = df_test.apply(make_prev_sale_date, axis=1)
     df_test_temp["sq_ft"] = df_test.apply(make_square_footage, axis=1)
     df_test_temp["bath_counts"] = df_test.apply(make_baths_counts, axis=1)
-    df_test_temp["lot_area"] = df_test.apply(make_square_footage, axis=1)
+    df_test_temp["lot_area"] = df_test.apply(make_lot_area, axis=1)
     df_test_temp["overall_quality"] = df_test.apply(make_overall_quality, axis=1)
     df_test_temp["overall_condition"] = df_test.apply(make_overall_condition, axis=1)
 
