@@ -3,9 +3,9 @@ The goal of this repository is to test whether we can use BERT to do a regressio
 
 **Generate Data:**
 
-I was not able to find any data sets for this, so I generated it myself. I took data from https://www.kaggle.com/c/house-prices-advanced-regression-techniques and generated and generated description paragraphs. 
+I was not able to find any data sets for this, so I generated it myself. I took data from https://www.kaggle.com/c/house-prices-advanced-regression-techniques and generated description paragraphs. 
 
-I only used a fraction of the data, I used:
+I did not use all the features. The features that I used:
 
 `MoSold`\
 `YrSold`\
@@ -16,8 +16,6 @@ I only used a fraction of the data, I used:
 `LotArea`\
 `OverallQual`\
 `OverallCond`
-
-features.
 
 And sample generated paragraph can look like this:
 
@@ -31,7 +29,7 @@ Or
 Lot area is 8500 square meters. The overall material and finish of the house is below average. First floor area is 649 square feet and second floor area is 668 square feet. Sold in July 2008. 1 full bathroom. The house is in below average condition.
 `
 
-The sentences are shuffled because order does not matter. The values are plugged in to different templates, for example square feet or meters can be to give measure of area. Also if a measurement is 0 for example for second floor area or half bathroom that portion is left out from the paragraph.
+The sentences are shuffled. The values are plugged in to different templates, for example square feet or meters can be to give measure of area. Also if a measurement is 0 for example for second floor area or half bathroom that portion is left out from the paragraph.
 
 After the data paragraphs are generated we training them on prices given in the dataset. We use very much a standard BERT approach.
 
@@ -41,7 +39,7 @@ I used `bert-base-uncased`. I added one linear layer on top of the BERT model. I
 
 **Results:**
 
-The resulting model scores in 0.21 to 0.23 (the predictions are not deterministic), which is not great and is below 80% of kaggle submissions. However, we are clearly handicapped, extracting information from a text is harder, and we are using only subset of the features. Also the model has not been tuned. Catboost algorithm that uses the same features scores about 0.18. Using just mean of the sale price gives 0.426. Therefore, the results look reasonable.
+The resulting model scores is 0.21 to 0.23 (the predictions are not deterministic), which is not great and is below 80% of kaggle submissions. However, we are clearly handicapped, extracting information from a text is harder, and we are using only subset of the features. Also the model has not been tuned. Catboost algorithm that uses the same features scores about 0.18. Using just mean of the sale price gives 0.426. Therefore, the results look reasonable.
 
 **How to run:**
 
